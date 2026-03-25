@@ -3,63 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FREONICH | Скоро открытие</title>
+    <title>FREONICH | Система охлаждается</title>
     <style>
+        /* Базовые стили: темная индастриал тема */
         body {
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: #0d1117; /* Чуть мягче черного */
+            color: #c9d1d9; /* Светло-серый, комфортный для глаз */
+            font-family: 'Courier New', Courier, monospace; /* Техно-шрифт */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            text-transform: uppercase;
-            overflow: hidden;
+            text-transform: uppercase; /* Все буквы заглавные */
+            overflow: hidden; /* Запрет прокрутки */
+            position: relative;
         }
+
+        /* Контейнер: эффект металлической панели */
         .container {
             text-align: center;
-            border: 2px solid #333;
-            padding: 50px;
-            background: rgba(20, 20, 20, 0.8);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+            border: 1px solid #30363d;
+            padding: 60px;
+            background: rgba(22, 27, 34, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 2; /* Чтобы быть поверх фона */
+            max-width: 90%;
         }
+
+        /* Заголовок: неоновое охлаждение */
         h1 {
-            font-size: 3rem;
-            letter-spacing: 10px;
+            font-size: 3.5rem;
+            letter-spacing: 12px;
             margin: 0;
             color: #fff;
-            text-shadow: 2px 2px #ff0000;
+            /* Голубой "морозный" неон */
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #03a9f4, 0 0 30px #03a9f4;
+            animation: flicker 4s infinite linear; /* Легкое мерцание */
         }
+
+        /* Подзаголовок: спокойный, лояльный */
         p {
-            letter-spacing: 3px;
-            font-size: 0.9rem;
-            margin-top: 20px;
-            color: #888;
+            letter-spacing: 2px;
+            font-size: 1rem;
+            margin-top: 25px;
+            margin-bottom: 5px;
+            color: #8b949e;
+            text-transform: none; /* Обычный регистр */
         }
-        .status {
-            margin-top: 30px;
-            padding: 10px;
-            border-top: 1px solid #333;
-            display: inline-block;
+
+        .highlight {
+            color: #58a6ff; /* Выделение цветом */
+            font-weight: bold;
         }
-        /* Эффект помех (noise) в стиле гранж */
+
+        /* Блок анимации компрессора / давления */
+        .pressure-gauge {
+            margin-top: 40px;
+            width: 300px;
+            height: 20px;
+            border: 2px solid #30363d;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            background: #161b22;
+        }
+
+        /* Анимированная полоса давления */
+        .pressure-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #03a9f4 0%, #1976d2 100%);
+            width: 0%; /* Начинаем с нуля */
+            animation: fillPressure 5s infinite ease-in-out;
+            box-shadow: 0 0 15px #03a9f4;
+        }
+
+        /* Текст статуса */
+        .status-text {
+            font-size: 0.8rem;
+            margin-top: 10px;
+            color: #03a9f4;
+            letter-spacing: 2px;
+        }
+
+        /* Фоновый эффект помех (noise), как старое ТВ */
         body::before {
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            opacity: 0.2;
+            opacity: 0.1;
             pointer-events: none;
+            z-index: 1;
+        }
+
+        /* --- Анимации --- */
+
+        /* Эффект мерцания неона */
+        @keyframes flicker {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+                opacity: 0.99;
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #03a9f4, 0 0 30px #03a9f4;
+            }
+            20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+                opacity: 0.4;
+                text-shadow: none;
+            }
+        }
+
+        /* Анимация шкалы давления */
+        @keyframes fillPressure {
+            0% { width: 5%; }
+            30% { width: 85%; } /* Резко накачиваем */
+            50% { width: 75%; } /* Чуть сбрасываем */
+            70% { width: 95%; } /* Снова накачиваем */
+            100% { width: 10%; } /* Сброс цикла */
+        }
+
+        /* Адаптация для мобильных */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; letter-spacing: 5px; }
+            .container { padding: 30px; }
+            .pressure-gauge { width: 100%; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>FREONICH</h1>
-        <p>Крафтовое стекло. Скоро запуск.</p>
-        <div class="status">Сайт в разработке</div>
+        <p>Идет техническая <span class="highlight">стабилизация системы</span>.</p>
+        <p>Лучший фреон в городе должен продаваться с идеального сайта.</p>
+        <p>Благодарим за терпение.</p>
+        
+        <div class="pressure-gauge">
+            <div class="pressure-bar"></div>
+        </div>
+        <div class="status-text">Система выходит на рабочий режим</div>
     </div>
 </body>
 </html>
