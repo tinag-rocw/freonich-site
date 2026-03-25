@@ -2,17 +2,64 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Сайт в разработке</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREONICH | Скоро открытие</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f4f4f4; color: #333; }
-        .container { text-align: center; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { margin-bottom: 10px; }
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-transform: uppercase;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            border: 2px solid #333;
+            padding: 50px;
+            background: rgba(20, 20, 20, 0.8);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 10px;
+            margin: 0;
+            color: #fff;
+            text-shadow: 2px 2px #ff0000;
+        }
+        p {
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            color: #888;
+        }
+        .status {
+            margin-top: 30px;
+            padding: 10px;
+            border-top: 1px solid #333;
+            display: inline-block;
+        }
+        /* Эффект помех (noise) в стиле гранж */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.2;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Сайт находится в разработке</h1>
-        <p>Мы скоро вернемся с чем-то интересным!</p>
+        <h1>FREONICH</h1>
+        <p>Крафтовое стекло. Скоро запуск.</p>
+        <div class="status">Сайт в разработке</div>
     </div>
 </body>
 </html>
